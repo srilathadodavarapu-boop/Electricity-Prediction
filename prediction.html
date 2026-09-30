@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Prediction | SmartEnergy AI</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        ⚡ Smart Energy 
+    </div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="prediction.html" class="active">Prediction</a>
+        <a href="dashboard.html">Dashboard</a>
+    </nav>
+
+</header>
+
+
+<section class="prediction-section">
+
+    <div class="page-heading">
+
+        <p class="tag">
+            ELECTRICITY PREDICTION
+        </p>
+
+        <h1>
+            Predict Electricity Usage
+        </h1>
+
+        <p>
+            Enter the room and environmental details below.
+        </p>
+
+    </div>
+
+
+    <div class="prediction-container">
+
+
+        <!-- FORM -->
+
+        <div class="form-card">
+
+            <h2>Enter Details</h2>
+
+
+            <label for="room">
+                Room Type
+            </label>
+
+            <select id="room">
+
+                <option value="classroom">
+                    Classroom
+                </option>
+
+                <option value="lab">
+                    Laboratory
+                </option>
+
+            </select>
+
+
+            <label for="students">
+                Number of Students
+            </label>
+
+            <input
+                type="number"
+                id="students"
+                placeholder="Example: 40"
+                min="1"
+            >
+
+
+            <label for="temperature">
+                Temperature (°C)
+            </label>
+
+            <input
+                type="number"
+                id="temperature"
+                placeholder="Example: 28"
+                min="1"
+            >
+
+
+            <label for="day">
+                Day
+            </label>
+
+            <select id="day">
+
+                <option value="0">Monday</option>
+                <option value="1">Tuesday</option>
+                <option value="2">Wednesday</option>
+                <option value="3">Thursday</option>
+                <option value="4">Friday</option>
+                <option value="5">Saturday</option>
+                <option value="6">Sunday</option>
+
+            </select>
+
+
+            <label for="time">
+                Time
+            </label>
+
+            <input
+                type="time"
+                id="time"
+                value="10:00"
+            >
+
+
+            <!-- AC -->
+
+            <div class="switch-row">
+
+                <label>
+                    AC Status
+                </label>
+
+                <button
+                    type="button"
+                    class="toggle"
+                    id="ac"
+                    onclick="toggleButton('ac')"
+                >
+                    OFF
+                </button>
+
+            </div>
+
+
+            <!-- LIGHTS -->
+
+            <div class="switch-row">
+
+                <label>
+                    Lights Status
+                </label>
+
+                <button
+                    type="button"
+                    class="toggle"
+                    id="lights"
+                    onclick="toggleButton('lights')"
+                >
+                    OFF
+                </button>
+
+            </div>
+
+
+            <button
+                class="primary-btn full"
+                onclick="predictUsage()"
+            >
+                🔮 Predict Consumption
+            </button>
+
+        </div>
+
+
+
+        <!-- RESULT -->
+
+        <div class="result-card">
+
+            <div class="result-icon">
+                ⚡
+            </div>
+
+            <h2>
+                Prediction Result
+            </h2>
+
+
+            <div
+                class="result-number"
+                id="result"
+            >
+                --.-- <span>kWh</span>
+            </div>
+
+
+            <p id="status">
+                Enter details and click predict.
+            </p>
+
+
+            <div class="result-info">
+
+                <div>
+                    <span>Room</span>
+                    <strong id="resultRoom">-</strong>
+                </div>
+
+                <div>
+                    <span>Students</span>
+                    <strong id="resultStudents">-</strong>
+                </div>
+
+                <div>
+                    <span>Temperature</span>
+                    <strong id="resultTemp">-</strong>
+                </div>
+
+                <div>
+                    <span>AC</span>
+                    <strong id="resultAC">-</strong>
+                </div>
+
+                <div>
+                    <span>Lights</span>
+                    <strong id="resultLights">-</strong>
+                </div>
+
+                <div>
+                    <span>Time</span>
+                    <strong id="resultTime">-</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>

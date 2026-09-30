@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Dashboard | Smart Energy </title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <div class="logo">
+        ⚡ Smart Energy
+    </div>
+
+    <nav>
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="prediction.html">
+            Prediction
+        </a>
+
+        <a
+            href="dashboard.html"
+            class="active"
+        >
+            Dashboard
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<section class="dashboard-section">
+
+
+    <div class="page-heading">
+
+        <p class="tag">
+            ENERGY DASHBOARD
+        </p>
+
+        <h1>
+            Electricity Usage Dashboard
+        </h1>
+
+        <p>
+            Compare yesterday's and today's electricity consumption.
+        </p>
+
+    </div>
+
+    <div class="test-data-box">
+    <button
+        class="test-btn"
+        onclick="createTestYesterdayData()"
+    >
+        🧪 Test Yesterday Data
+    </button>
+
+    <p>
+        Click this button to create sample yesterday data
+        for testing the dashboard comparison.
+    </p>
+</div>
+<!-- STATISTICS -->
+
+<div class="statistics-grid">
+
+    <div class="stat-card">
+        <div class="stat-icon">📊</div>
+        <h3>Total Predictions</h3>
+        <div class="stat-number" id="totalPredictions">
+            0
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon">⚡</div>
+        <h3>Average Usage</h3>
+        <div class="stat-number" id="averageUsage">
+            0.00 kWh
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon">⬆️</div>
+        <h3>Highest Usage</h3>
+        <div class="stat-number" id="highestUsage">
+            0.00 kWh
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon">⬇️</div>
+        <h3>Lowest Usage</h3>
+        <div class="stat-number" id="lowestUsage">
+            0.00 kWh
+        </div>
+    </div>
+
+</div>
+
+
+    <!-- COMPARISON CARDS -->
+
+    <div class="comparison-grid">
+
+
+        <div class="dashboard-card">
+
+            <h3>
+                📅 Yesterday
+            </h3>
+
+            <div
+                class="big-number"
+                id="yesterdayUsage"
+            >
+                -- kWh
+            </div>
+
+            <p id="yesterdayDate">
+                No data
+            </p>
+
+        </div>
+
+
+
+        <div class="dashboard-card today-card">
+
+            <h3>
+                ⚡ Today
+            </h3>
+
+            <div
+                class="big-number"
+                id="todayUsage"
+            >
+                -- kWh
+            </div>
+
+            <p id="todayDate">
+                No data
+            </p>
+
+        </div>
+
+
+
+        <div class="dashboard-card">
+
+            <h3>
+                📊 Difference
+            </h3>
+
+            <div
+                class="big-number"
+                id="difference"
+            >
+                -- kWh
+            </div>
+
+            <p id="differenceText">
+                Waiting for data
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- CHART -->
+
+    <div class="chart-card">
+
+        <h2>
+            Yesterday vs Today
+        </h2>
+
+        <div class="chart">
+
+            <div class="bar-container">
+
+                <div
+                    class="bar yesterday-bar"
+                    id="yesterdayBar"
+                >
+                    <span id="yesterdayBarValue">
+                        0
+                    </span>
+                </div>
+
+                <p>
+                    Yesterday
+                </p>
+
+            </div>
+
+
+
+            <div class="bar-container">
+
+                <div
+                    class="bar today-bar"
+                    id="todayBar"
+                >
+                    <span id="todayBarValue">
+                        0
+                    </span>
+                </div>
+
+                <p>
+                    Today
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- DETAILS -->
+
+    <div class="details-section">
+
+
+        <div class="detail-card">
+
+            <h2>
+                Yesterday Details
+            </h2>
+
+            <p>
+                Room:
+                <strong id="yRoom">-</strong>
+            </p>
+
+            <p>
+                Students:
+                <strong id="yStudents">-</strong>
+            </p>
+
+            <p>
+                Temperature:
+                <strong id="yTemperature">-</strong>
+            </p>
+
+            <p>
+                AC:
+                <strong id="yAC">-</strong>
+            </p>
+
+            <p>
+                Lights:
+                <strong id="yLights">-</strong>
+            </p>
+
+        </div>
+
+
+
+        <div class="detail-card">
+
+            <h2>
+                Today Details
+            </h2>
+
+            <p>
+                Room:
+                <strong id="tRoom">-</strong>
+            </p>
+
+            <p>
+                Students:
+                <strong id="tStudents">-</strong>
+            </p>
+
+            <p>
+                Temperature:
+                <strong id="tTemperature">-</strong>
+            </p>
+
+            <p>
+                AC:
+                <strong id="tAC">-</strong>
+            </p>
+
+            <p>
+                Lights:
+                <strong id="tLights">-</strong>
+            </p>
+
+        </div>
+
+    </div>
+    <!-- USAGE TREND -->
+
+<div class="trend-section">
+
+    <div class="page-heading">
+        <p class="tag">USAGE TREND</p>
+
+        <h2>
+            Electricity Usage Trend
+        </h2>
+
+        <p>
+            Track predicted electricity usage over time.
+        </p>
+    </div>
+
+    <div class="trend-card">
+
+        <div class="trend-chart" id="trendChart">
+
+            <div class="no-trend-data" id="noTrendData">
+                No prediction data available yet.
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- SMART RECOMMENDATIONS -->
+
+<div class="recommendation-section">
+
+    <div class="page-heading">
+        <p class="tag">SMART SUGGESTIONS</p>
+
+        <h2>
+            Energy Saving Recommendations
+        </h2>
+
+        <p>
+            Smart suggestions based on your latest electricity prediction.
+        </p>
+    </div>
+
+    <div class="recommendation-card" id="recommendationCard">
+
+        <div class="recommendation-icon">
+            💡
+        </div>
+
+        <div>
+            <h3 id="recommendationTitle">
+                No recommendation yet
+            </h3>
+
+            <p id="recommendationText">
+                Make a prediction to receive an energy-saving suggestion.
+            </p>
+        </div>
+
+    </div>
+
+</div>
+    <!-- PREDICTION HISTORY -->
+
+<div class="history-section">
+
+    <div class="page-heading">
+        <p class="tag">PREDICTION HISTORY</p>
+
+        <h2>
+            Recent Electricity Predictions
+        </h2>
+
+        <p>
+            View your previous electricity usage predictions.
+        </p>
+    </div>
+
+    <div class="history-card">
+
+        <table class="history-table">
+
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Room</th>
+                    <th>Students</th>
+                    <th>Temperature</th>
+                    <th>AC</th>
+                    <th>Lights</th>
+                    <th>Usage</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+            <tbody id="historyTableBody">
+
+                <tr>
+                    <td colspan="9">
+                        No prediction history available.
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+
+</section>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
